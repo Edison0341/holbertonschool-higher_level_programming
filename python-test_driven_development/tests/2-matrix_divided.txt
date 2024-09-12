@@ -1,5 +1,5 @@
 The "matrix_divided" doctest
-========================
+============================
 
 Tests the matrix_divided function from 2-matrix_divided
 for any edge cases that may break the functionality
@@ -8,8 +8,8 @@ of the imported function.
 >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
 
 >>> matrix = [[1, 2, 3], [4, 5, 6]]
-    >>> print(matrix_divided(matrix, 3))
-    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+>>> print(matrix_divided(matrix, 3))
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
 >>> try:
 ...     matrix_divided([["A", "d" ,"i"], ["i", "o", "s"]], 3)
@@ -24,12 +24,12 @@ matrix must be a matrix (list of lists) of integers/floats
 division by zero
 
 >>> matrix = [[1, 2, 3], [4, 5, 6]]
-    >>> print(matrix_divided(matrix, -3))
-    [[-0.33, -0.67, -1.0], [-1.33, -1.67, -2.0]]
+>>> print(matrix_divided(matrix, -3))
+[[-0.33, -0.67, -1.0], [-1.33, -1.67, -2.0]]
 
 >>> matrix = [[]]
-    >>> print(matrix_divided(matrix, 2))
-    [[]]
+>>> print(matrix_divided(matrix, 2))
+[[]]
 
 >>> try:
 ...     matrix_divided([[1, 2 ,3], [4, 5]], 3)

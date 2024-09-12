@@ -6,7 +6,7 @@
 def matrix_divided(matrix, div):
     """Divide all elements of a matrix by a given number and round to 2 decimal
     places."""
-    e = "matrix must be a matrix (array of arrays of integers/floats)"
+    error = "matrix must be a matrix (array of arrays of integers/floats)"
     if type(div) not in (int, float):
         raise TypeError("div must be a number")
     if div == 0:
