@@ -11,13 +11,12 @@ def matrix_divided(matrix, div):
         raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
-    if not isinstance(matrix, list) or not all(isinstance(row,list)
-    for row in matrix):
-        raise TypeError(e)
-    row_length = len(matrix[0])
-    if not all(len(row) == row_length for row in matrix):
-        raise TypeError("Each row of the matrix must have the same size")
-    for row in matrix:
-        if not all(isinstance(item, (int, float)) for item in row):
-            raise TypeError(e)
-    return ([list(map(lambda x: round(x / div, 2), row)) for row in matrix])
+    for rows in matrix:
+        if type(rows) is not list:
+            raise TypeError(error)
+        if len(rows) != len(matrix[0]):
+            raise TypeError("Each row of the matrix must have the same size")
+        for index in rows:
+            if type(index) not in (int, float):
+                raise TypeError(error)
+    return ([list(map(lambda x: round(x / div, 2), rows)) for rows in matrix])
