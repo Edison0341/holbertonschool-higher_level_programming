@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 def list_division(my_list_1, my_list_2, list_length):
     result = []
-    for number in range(list_length):
+    for idx in range(list_length):
         try:
-            if number >= len(my_list_1) or number >= len(my_list_2):
+            if idx >= len(my_list_1) or idx >= len(my_list_2):
                 raise IndexError
-            if not isinstance(my_list_1[number], (int, float)) or not isinstance(my_list_2[number], (int, float)):
+            if (not isinstance(my_list_1[idx], (int, float)) or
+                    not isinstance(my_list_2[idx], (int, float))):
                 raise TypeError
-            division = my_list_1[number] / my_list_2[number]
+            division = my_list_1[idx] / my_list_2[idx]
         except ZeroDivisionError:
             print("division by 0")
             division = 0
