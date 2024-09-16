@@ -2,6 +2,6 @@
 """This is a clase for a square"""
 
 
-class square():
+class Square():
     """this is a square class"""
     pass
