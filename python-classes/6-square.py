@@ -8,8 +8,8 @@ class Square:
     def __init__(self, size=0, position=(0, 0)):
         """Initialize a square with size validation"""
 
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
@@ -50,7 +50,7 @@ class Square:
             taking position into account"""
 
         if self.__size == 0:
-            print("")
+            print()
             return
 
         for _ in range(self.__position[1]):
