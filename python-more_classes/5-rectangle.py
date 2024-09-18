@@ -75,7 +75,7 @@ class Rectangle:
     def __repr__(self):
         """Define the official representation of the rectangle"""
         return f"Rectangle({self.__width}, {self.__height})"
-    
+
     def __del__(self):
         """Custom deletion behavior"""
-        print("Bye rectangle ...")
+        print("Bye rectangle...")
