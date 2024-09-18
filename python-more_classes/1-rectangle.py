@@ -1,26 +1,26 @@
 #!/usr/bin/python3
-"""some txt explaing class"""
+"""Defines a rectangle class"""
 
 
 class Rectangle:
-    """some text for rectangle"""
+    """Represents a rectangle"""
     
 
     def __init__(self, width=0, height=0):
-        """some other text for rectangle"""
+        """Initializes the rectangle with a width and height"""
 
         self.__width = width
         self.__height = height
 
     @property
     def width(self):
-        """txt"""
+        """Getter for the width of the rectangle"""
 
         return self.__width
 
     @width.setter
     def width(self, value):
-        """txt"""
+        """Setter for the width of the rectangle"""
 
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
@@ -30,16 +30,16 @@ class Rectangle:
 
     @property
     def height(self):
-        """txt"""
+        """Getter for the height of the rectangle"""
 
         return self.__height
 
     @height.setter
     def height(self, value):
-        """txt"""
+        """Setter for the height of the rectangle"""
 
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
-            raise ValueError("heigth must be >= 0")
+            raise ValueError("height must be >= 0")
         self.__height = value
