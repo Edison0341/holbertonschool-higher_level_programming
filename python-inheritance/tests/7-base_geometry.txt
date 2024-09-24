@@ -7,10 +7,10 @@ for edge cases and errors
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 >>> bg.integer_validator("my_int", 12)
->>> print(f"{bg.name} is {bg.value}")
+>>> print("my_int is", 12)
 my_int is 12
 >>> bg.integer_validator("width", 89)
->>> print(f"{bg.name} is {bg.value}")
+>>> print("width is", 89)
 width is 89
 >>> try:
 ...     bg.integer_validator("name", "John")
