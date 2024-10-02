@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import pickle
-"""txt"""
+"""Module for serializing and deserializin data"""
 
 
 def serialize_and_save_to_file(data, filename):
