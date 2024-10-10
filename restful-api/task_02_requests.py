@@ -31,5 +31,4 @@ def fetch_and_save_posts():
     else:
         print(f"Failed to fetch posts. Status code: {r.status_code}")
         
-fetch_and_save()
 
