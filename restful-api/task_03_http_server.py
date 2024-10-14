@@ -22,6 +22,16 @@ class MyHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b"OK")
 
+        elif self.path == "/info":
+            data = {
+                "version": "1.0",
+                "description": "A simple API built with http.server"
+            }
+            self.send_response(200)
+            self.send_header('content-type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps(data). encode("utf-8"))
+
         elif self.path == '/':
             self.send_response(200)
             self.send_header('content-type', 'text/plain')
@@ -36,7 +46,7 @@ class MyHandler(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header('content-type', 'text/html')
             self.end_headers()
-            self.wfile.write(b"404 Not Found")
+            self.wfile.write(b"Endpoint not found")
 
 
 def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
