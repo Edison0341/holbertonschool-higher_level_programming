@@ -4,13 +4,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-users_data = {
-    "jane": {
-        "name": "Jane",
-        "age": 28,
-        "city": "Los Angeles"
-    }
-}
+users = {}
 
 
 @app.route('/')
@@ -20,45 +14,34 @@ def home():
 
 @app.route('/data')
 def data():
-    return (jsonify(users_data))
+    return (jsonify(list(users.keys())))
 
 
 @app.route('/status')
 def status():
-    return ("OK")
+    return "OK"
 
 
 @app.route('/users/<username>')
 def get_user(username):
-    user = users_data.get(username)
+    user = users.get(username)
     if user:
         return (jsonify(user))
     else:
-        return (jsonify({"error": "User not foung"}), 404)
+        return (jsonify({"error": "User not found"}), 404)
 
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
-    new_user = request.get_json()
-    required_keys = ['username', 'name', 'age', 'city']
-    if not new_user or not all(key in new_user for key in required_keys):
-        return (jsonify({"error":
-                "Invalid data. Username, name, age, and city are required."}),
-                400)
+    new_user = request.json
+    username = new_user.get("username")
 
-    username = new_user['username']
-
-    if username in users_data:
-        return (jsonify({"error": "User already exits"}), 400)
-
-    users_data[username] = {
-        "name": new_user['name'],
-        "age": new_user['age'],
-        "city": new_user['city']
-    }
-
-    return (jsonify({"message": "User added succesfully.",
-                    "user": users_data[username]}), 201)
+    if not username:
+        return (jsonify({"error": "Username is required"}), 400)
+    if username in users:
+        return (jsonify({"error": "User already exists"}), 400)
+    users[username] = new_user
+    return jsonify({"message": "User added", "user": new_user}), 201
 
 
 if __name__ == '__main__':
