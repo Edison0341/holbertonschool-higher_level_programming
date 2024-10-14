@@ -22,7 +22,7 @@ class MyHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b"OK")
 
-        elif self.path =='/':
+        elif self.path == '/':
             self.send_response(200)
             self.send_header('content-type', 'text/plain')
             self.end_headers()
@@ -43,6 +43,7 @@ def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
     server_address = ('', 8000)
     httpd = server_class(server_address, handler_class)
     httpd.serve_forever()
+
 
 if __name__ == '__main__':
     run(handler_class=MyHandler)
