@@ -24,12 +24,6 @@ users = {
 app.config['JWT_SECRET_KEY'] = 'your_secret_key'
 jwt = JWTManager(app)
 
-@app.route('/basic_protected', methods=['GET'])
-@auth.login_required
-def basic_protected():
-    return "Basic Auth: Access Granted"
-
-
 @auth.verify_password
 def verify_password(username, password):
     user = users.get(username)
@@ -38,9 +32,10 @@ def verify_password(username, password):
     return None
 
 
-@app.errorhandler(401)
-def unathorized_error(error):
-    return jsonify({"error": "Unathorized access, please provide valid credentials."}), 401
+@app.route('/basic_protected', methods=['GET'])
+@auth.login_required
+def basic_protected():
+    return "Basic Auth: Access Granted"
 
 
 @app.route('/login', methods=['POST'])
@@ -64,7 +59,7 @@ def jwt_protected():
     return "JWT Auth: Access Granted"
 
 
-@app.route('/admin-only', methods=['GET'])
+@app.route('/admin-only')
 @jwt_required()
 def admin_only():
     identity = get_jwt_identity()
