@@ -24,6 +24,11 @@ users = {
 app.config['JWT_SECRET_KEY'] = 'your_secret_key'
 jwt = JWTManager(app)
 
+@app.route('/basic_protected', methods=['GET'])
+@auth.login_required
+def basic_protected():
+    return "Basic Auth: Access Granted"
+
 
 @auth.verify_password
 def verify_password(username, password):
@@ -31,12 +36,6 @@ def verify_password(username, password):
     if user and check_password_hash(user["password"], password):
         return user
     return None
-
-
-@app.route('/basic_protected', methods=['GET'])
-@auth.login_required
-def basic_protected():
-    return "Basic Auth: Access Granted"
 
 
 @app.errorhandler(401)
@@ -100,4 +99,4 @@ def handle_needs_fresh_token_error(err):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
