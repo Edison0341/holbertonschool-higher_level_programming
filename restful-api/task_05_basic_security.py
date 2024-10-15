@@ -33,14 +33,13 @@ def verify_password(username, password):
     return None
 
 
-@auth.login_required
 @app.route('/basic_protected', methods=['GET'])
+@auth.login_required
 def basic_protected():
     return "Basic Auth: Access Granted"
 
 
-@auth.login_required
-@app.route('/login', method=['POST'])
+@app.route('/login', methods=['POST'])
 def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
@@ -55,13 +54,13 @@ def login():
         return jsonify({"message": "Bad username or password"}), 401
 
 
-@app.route('jwt-protected', methods=['GET'])
+@app.route('/jwt-protected', methods=['GET'])
 @jwt_required()
 def jwt_protected():
     return "JWT Auth: Access Granted"
 
 
-@app.route('/admin-only')
+@app.route('/admin-only', methods=['GET'])
 @jwt_required()
 def admin_only():
     identity = get_jwt_identity()
@@ -82,7 +81,7 @@ def handle_invalid_token_error(err):
 
 @jwt.expired_token_loader
 def handle_expired_token_error(err):
-    return jsonify({"error": "Token has been revoked"}), 401
+    return jsonify({"error": "Token has been expired"}), 401
 
 
 @jwt.needs_fresh_token_loader
