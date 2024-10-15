@@ -39,6 +39,11 @@ def basic_protected():
     return "Basic Auth: Access Granted"
 
 
+@app.errorhandler(401)
+def unathorized_error(error):
+    return jsonify({"error": "Unathorized access, please provide valid credentials."}), 401
+
+
 @app.route('/login', methods=['POST'])
 def login():
     username = request.json.get("username", None)
