@@ -11,7 +11,7 @@ def list_states(username, password, database_name, search):
             host="localhost",
             port=3306,
             user=username,
-            passwd=password,
+            password=password,
             db=database_name
         )
         cursor = conn.cursor()
@@ -28,4 +28,7 @@ def list_states(username, password, database_name, search):
 
 
 if __name__ == "__main__":
-    list_states(sys.argv[1], sys.argv[2], sys.argv[3])
+    if len(sys.argv) == 5:
+        list_states(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+    else:
+        print("Usage: python3 file username password database search")
