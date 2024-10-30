@@ -1,4 +1,4 @@
-#!/user/bin/python3
+#!/usr/bin/python3
 import MySQLdb
 import sys
 
@@ -17,10 +17,10 @@ def list_states(username, password, database_name):
             print(state)
 
         cur.close()
-        conn.closed()
+        conn.close()
 
     except MySQLdb.Error as e:
-        print(f"Error connecting to MySQL or execuiting query: {e}")
+        print(f"Error connecting to MySQL or executing query: {e}")
 
 
 if __name__ == "__main__":
