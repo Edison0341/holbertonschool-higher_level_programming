@@ -1,14 +1,16 @@
 #!/usr/bin/python3
+"""List all states in a database"""
 import MySQLdb
 import sys
 
 
 def list_states(username, password, database_name):
+    """connects to MySQL server"""
     try:
         conn = MySQLdb.connect(host="localhost",
                                port=3306,
                                user=username,
-                               password=password,
+                               passwd=password,
                                db=database_name)
         cur = conn.cursor()
         cur.execute("SELECT * FROM states ORDER BY states.id ASC")
