@@ -19,7 +19,7 @@ def list_states(username, password, database_name):
                 FROM cities\
                 JOIN states ON cities.state_id = states.id\
                 ORDER BY cities.id ASC")
-        
+
         cities = cursor.fetchall()
         for city in cities:
             print(city)
