@@ -19,10 +19,10 @@ def list_states(username, password, database_name, search):
                 FROM cities\
                 JOIN states ON cities.state_id = states.id\
                 ORDER BY cities.id ASC"
-        cursor.execute(query, (search,))
+        cursor.execute(query)
         states = cursor.fetchall()
-        for state in states:
-            print(state)
+        for city in cities:
+            print(city)
         cursor.close()
         conn.close()
 
