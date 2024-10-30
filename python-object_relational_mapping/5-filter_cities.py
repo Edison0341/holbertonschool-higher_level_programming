@@ -4,7 +4,7 @@ import MySQLdb
 import sys
 
 
-def list_states(username, password, database_name):
+def list_states(username, password, database_name, state_name):
     """connects to MySQL server"""
     try:
         conn = MySQLdb.connect(
