@@ -24,7 +24,7 @@ def list_states(username, password, database_name):
         city_names = [city[0] for city in cities]
         formated_cities = ", ".join(city_names)
         print(formated_cities)
-        
+
         cursor.close()
         conn.close()
 
