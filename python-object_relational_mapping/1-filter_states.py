@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""List all states in a database"""
+"""List all states in a database that start with N"""
 import MySQLdb
 import sys
 
@@ -13,7 +13,7 @@ def list_states(username, password, database_name):
                                passwd=password,
                                db=database_name)
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM states WHERE name LIKE '%N' ORDER BY states.id ASC")
+        cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id ASC")
         states = cursor.fetchall()
         for state in states:
             print(state)
