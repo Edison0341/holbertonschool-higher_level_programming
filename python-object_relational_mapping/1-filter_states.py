@@ -7,11 +7,13 @@ import sys
 def list_states(username, password, database_name):
     """connects to MySQL server"""
     try:
-        conn = MySQLdb.connect(host="localhost",
-                               port=3306,
-                               user=username,
-                               passwd=password,
-                               db=database_name)
+        conn = MySQLdb.connect(
+            host="localhost",
+            port=3306,
+            user=username,
+            passwd=password,
+            db=database_name
+        )
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM states\
                         WHERE name LIKE BINARY 'N%' ORDER BY states.id ASC")
