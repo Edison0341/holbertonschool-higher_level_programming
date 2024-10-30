@@ -12,13 +12,13 @@ def list_states(username, password, database_name):
                                user=username,
                                passwd=password,
                                db=database_name)
-        cur = conn.cursor()
-        cur.execute("SELECT * FROM states ORDER BY states.id ASC")
-        states = cur.fetchall()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
+        states = cursor.fetchall()
         for state in states:
             print(state)
 
-        cur.close()
+        cursor.close()
         conn.close()
 
     except MySQLdb.Error as e:
@@ -26,10 +26,4 @@ def list_states(username, password, database_name):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python3 0-select_states.py username password database")
-    else:
-        username = sys.argv[1]
-        password = sys.argv[2]
-        database_name = sys.argv[3]
-        list_states(username, password, database_name)
+    list_states(sys.argv[1], sys.argv[2], sys.argv[3])
