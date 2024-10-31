@@ -1,15 +1,27 @@
 #!/usr/bin/python3
 """First state model"""
-from model_state import Base
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
 
 
-class City(Base):
-    """Base class for the states table"""
-    __tablename__ = "cities"
+Base = declarative_base()
 
-    id = Column("id", Integer, primary_key=True, autoincrement=True)
-    name = Column("name", String(128), nullable=False)
-    state_id = Column("state_id", ForeignKey("states.id"), nullable=False)
-    state = relationship("State", back_populates="cities")
+
+class State(Base):
+    """
+        State class inherits from Base
+    """
+
+    __tablename__ = 'states'
+
+    id = Column(
+        Integer,
+        primary_key=True,
+        nullable=False,
+        autoincrement=True
+    )
+
+    name = Column(
+        String(128),
+        nullable=False
+    )
