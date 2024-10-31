@@ -9,7 +9,9 @@ from sqlalchemy.orm import sessionmaker
 if __name__ == "__main__":
     """create engine"""
     if len(sys.argv) != 4:
-        print("wrong")
+        print("Usage: ./<script_name> <mysql_username> <mysql_password>\
+             <database_name>")
+        sys.exit(1)
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
                            .format(sys.argv[1], sys.argv[2], sys.argv[3]),
                            pool_pre_ping=True)
